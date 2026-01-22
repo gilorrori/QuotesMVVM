@@ -1,5 +1,8 @@
 plugins {
     alias(libs.plugins.android.application)
+    alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.dagger.hilt)
+    alias(libs.plugins.kotlin.kapt)
 }
 
 android {
@@ -55,4 +58,9 @@ dependencies {
     implementation(libs.androidx.fragment.ktx)
     //Activity
     implementation(libs.androidx.activity.ktx)
+
+    //Hilt
+    implementation(libs.hilt.android)
+    implementation(libs.androidx.runner)
+    kapt(libs.hilt.android.compiler)
 }

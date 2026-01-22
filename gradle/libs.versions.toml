@@ -1,5 +1,5 @@
 [versions]
-agp = "9.0.0"
+agp = "8.13.2"
 coreKtx = "1.17.0"
 fragmentKtx = "1.8.9"
 junit = "4.13.2"
@@ -10,6 +10,10 @@ lifecycleViewmodelKtx = "2.10.0"
 material = "1.13.0"
 activity = "1.12.2"
 constraintlayout = "2.2.1"
+hiltAndroidCompiler = "2.58"
+runner = "1.7.0"
+kotlin = "2.2.0"
+
 
 [libraries]
 androidx-activity-ktx = { module = "androidx.activity:activity-ktx", version.ref = "activity" }
@@ -25,6 +29,14 @@ material = { group = "com.google.android.material", name = "material", version.r
 androidx-activity = { group = "androidx.activity", name = "activity", version.ref = "activity" }
 androidx-constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
 
+# Dagger Hilt
+hilt-android = { module = "com.google.dagger:hilt-android", version.ref = "hiltAndroidCompiler" }
+androidx-runner = { group = "androidx.test", name = "runner", version.ref = "runner" }
+hilt-android-compiler = { module = "com.google.dagger:hilt-android-compiler", version.ref = "hiltAndroidCompiler" }
+
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
+dagger-hilt = { id = "com.google.dagger.hilt.android", version.ref = "hiltAndroidCompiler" }
+kotlin-kapt = { id = "org.jetbrains.kotlin.kapt", version.ref = "kotlin" }
+kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 
