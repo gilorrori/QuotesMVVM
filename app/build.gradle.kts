@@ -22,12 +22,16 @@ android {
     }
 
     buildTypes {
-        release {
+        getByName("release") {
             isMinifyEnabled = false
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
+        }
+
+        getByName("debug"){
+            buildConfigField("String", "BASE_URL", "\"https://drawsomething-59328-default-rtdb.europe-west1.firebasedatabase.app/\"")
         }
     }
     compileOptions {
@@ -65,9 +69,18 @@ dependencies {
     implementation(libs.androidx.fragment.ktx)
     //Activity
     implementation(libs.androidx.activity.ktx)
+    //Coroutines
+    //implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.10.2")
 
     //Hilt
     implementation(libs.hilt.android)
     implementation(libs.androidx.runner)
     kapt(libs.hilt.android.compiler)
+
+    //Retrofit
+    implementation (libs.retrofit)
+    implementation (libs.converter.gson)
+    implementation (libs.interceptor)
+
+
 }

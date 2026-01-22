@@ -1,6 +1,8 @@
 package com.gilorroristore.quotesmvvm.data.network.model
 
+import com.google.gson.annotations.SerializedName
+
 data class QuoteModel(
-    val quote: String,
-    val author: String
+    @SerializedName("quote") val quote: String,
+    @SerializedName("author") val author: String
 )
