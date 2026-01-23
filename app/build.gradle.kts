@@ -82,5 +82,7 @@ dependencies {
     implementation (libs.converter.gson)
     implementation (libs.interceptor)
 
-
+    //Room
+    implementation(libs.androidx.room.ktx)
+    annotationProcessor(libs.androidx.room.compiler)
 }
