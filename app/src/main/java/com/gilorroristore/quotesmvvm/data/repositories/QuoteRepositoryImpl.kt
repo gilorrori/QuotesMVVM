@@ -6,11 +6,14 @@ import com.gilorroristore.quotesmvvm.data.network.provider.QuoteProvider
 import com.gilorroristore.quotesmvvm.domain.QuoteRepository
 import javax.inject.Inject
 
-class QuoteRepositoryImpl @Inject constructor(private val quoteApiService: QuoteApiService) : QuoteRepository {
+class QuoteRepositoryImpl @Inject constructor(
+    private val quoteApiService: QuoteApiService,
+    private val quoteProvider: QuoteProvider
+) : QuoteRepository {
 
     override suspend fun getAllQuotes(): List<QuoteModel> {
         val response = quoteApiService.getAllQuotes()
-        QuoteProvider.quotes = response
+        quoteProvider.quotes = response
         return response
     }
 }

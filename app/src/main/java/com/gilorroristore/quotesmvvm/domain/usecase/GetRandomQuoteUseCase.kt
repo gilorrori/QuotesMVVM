@@ -4,10 +4,12 @@ import com.gilorroristore.quotesmvvm.data.network.model.QuoteModel
 import com.gilorroristore.quotesmvvm.data.network.provider.QuoteProvider
 import javax.inject.Inject
 
-class GetRandomQuoteUseCase @Inject constructor(private val provider: QuoteProvider) {
+class GetRandomQuoteUseCase @Inject constructor(
+    private val provider: QuoteProvider
+) {
 
     operator fun invoke(): QuoteModel? {
-        val quotes = QuoteProvider.quotes
+        val quotes = provider.quotes
         if (quotes.isNotEmpty()) {
             val randomNumber = (quotes.indices).random()
             return quotes[randomNumber]

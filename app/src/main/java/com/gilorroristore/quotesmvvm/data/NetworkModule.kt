@@ -1,6 +1,7 @@
 package com.gilorroristore.quotesmvvm.data
 
 import com.gilorroristore.quotesmvvm.BuildConfig
+import com.gilorroristore.quotesmvvm.data.network.provider.QuoteProvider
 import com.gilorroristore.quotesmvvm.data.repositories.QuoteRepositoryImpl
 import com.gilorroristore.quotesmvvm.domain.QuoteRepository
 import dagger.Module
@@ -19,7 +20,7 @@ class NetworkModule {
 
     @Provides
     @Singleton
-    fun provideOkHttpClient() : OkHttpClient {
+    fun provideOkHttpClient(): OkHttpClient {
         val interceptor = HttpLoggingInterceptor().setLevel((HttpLoggingInterceptor.Level.BODY))
 
         return OkHttpClient.Builder()
@@ -30,7 +31,7 @@ class NetworkModule {
 
     @Provides
     @Singleton
-    fun provideRetrofit(okHttpClient: OkHttpClient) : Retrofit {
+    fun provideRetrofit(okHttpClient: OkHttpClient): Retrofit {
         return Retrofit.Builder()
             .baseUrl(BuildConfig.BASE_URL)
             .client(okHttpClient)
@@ -40,13 +41,16 @@ class NetworkModule {
 
     @Provides
     @Singleton
-    fun provideQuiteApiService(retrofit: Retrofit) : QuoteApiService {
+    fun provideQuiteApiService(retrofit: Retrofit): QuoteApiService {
         return retrofit.create(QuoteApiService::class.java)
     }
 
     @Provides
     @Singleton
-    fun provideQuoteRepository(quoteApiService: QuoteApiService) : QuoteRepository {
-        return QuoteRepositoryImpl(quoteApiService)
+    fun provideQuoteRepository(
+        quoteApiService: QuoteApiService,
+        quoteProvider: QuoteProvider
+    ): QuoteRepository {
+        return QuoteRepositoryImpl(quoteApiService, quoteProvider)
     }
 }

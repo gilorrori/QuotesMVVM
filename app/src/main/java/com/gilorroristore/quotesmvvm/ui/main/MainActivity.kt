@@ -31,7 +31,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initObservers() {
-        quoteViewModel.isLoading.observe(this, Observer{
+        quoteViewModel.isLoading.observe(this, Observer {
             binding.loading.isVisible = it
         })
 

@@ -12,8 +12,12 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class QuoteViewModel @Inject constructor(private val quotesUseCase: GetQuotesUseCase, private val randomQuoteUseCase: GetRandomQuoteUseCase) :
+class QuoteViewModel @Inject constructor(
+    private val quotesUseCase: GetQuotesUseCase,
+    private val randomQuoteUseCase: GetRandomQuoteUseCase
+) :
     ViewModel() {
+
     private var _quiteModel = MutableLiveData<QuoteModel>()
     val isLoading = MutableLiveData<Boolean>()
 
